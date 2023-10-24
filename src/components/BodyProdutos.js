@@ -7,11 +7,6 @@ export function addCarinho() {
     const nomeProduto = document.getElementById('NomeProduto').textContent;
     const precoProduto = document.getElementById('PrecoProduto').textContent;
 
-    // Adicione os valores aos produtos no carrinho usando `push`
-    carrinhoProdutos.push({ nome: nomeProduto, preco: precoProduto });
-
-    // Atualize a interface manualmente
-    renderCarrinho();
 }
 
      
