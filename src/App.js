@@ -3,6 +3,8 @@ import BodyCarrinho from './components/BodyCarrinho';
 import BodyPerfil from './components/BodyPerfil';
 import BodyProdutos from './components/BodyProdutos';
 import { useState } from "react"
+
+
 function App() {
 
   const [CompProdutos, SetIsProduto] = useState(true);

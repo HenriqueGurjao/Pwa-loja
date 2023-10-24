@@ -1,6 +1,58 @@
+import React, { useEffect } from 'react';
 import teclado from '../img/teclado1.jpeg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function BodyProdutos() {
+    
+    const notify = () =>{
+        toast('Adicionado no Carrinho')
+    }
+
+  const applePayMethod = {
+    supportedMethods: 'https://google.com/pay',
+    data: {
+      version: 3,
+      merchantIdentifier: 'merchant.whatpwacando.today',
+      merchantCapabilities: ['supports3DS', 'supportsCredit', 'supportsDebit'],
+      supportedNetworks: ['amex', 'discover', 'masterCard', 'visa', 'maestro'],
+      countryCode: 'BR',
+    },
+  };
+
+
+  const paymentDetails = {
+    id: 'order-123',
+    displayItems: [
+      {
+        label: 'PWA Demo Payment',
+        amount: { currency: 'USD', value: '0.01' },
+      },
+    ],
+    total: {
+      label: 'Total',
+      amount: { currency: 'USD', value: '0.01' },
+    },
+  };
+
+  useEffect(() => {
+    const applePayButton = document.querySelector('#apple-pay-button');
+
+    if (applePayButton) {
+      applePayButton.addEventListener('click', async () => {
+        const request = new PaymentRequest([applePayMethod], paymentDetails);
+        const response = await request.show();
+
+        console.log(response);
+      });
+    }
+
+  }, []); // Empty dependency array ensures the effect runs once after the initial render
+
+
+
+
     return (
         <div className="">
             <div className=" grid justify-items-center p-4 text-xl ">
@@ -15,13 +67,14 @@ function BodyProdutos() {
                             <p>R$ 19 </p>
 
                         </div>
+                        
                         <div className=" flex flex-col justify-around md:flex-row mb-4" >
                             <div className=" mx-1 text-white ">
-                                <button className="border w-28 rounded-lg bg-green-500">comprar</button>
-
+                                <button className="border w-28 rounded-lg bg-green-500" id="apple-pay-button">comprar</button>
+                                <ToastContainer/>
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -41,7 +94,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -61,7 +114,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -81,7 +134,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -101,7 +154,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -125,7 +178,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -145,7 +198,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -165,7 +218,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -185,7 +238,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
@@ -205,7 +258,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500">carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
 
                             </div>
                         </div>
