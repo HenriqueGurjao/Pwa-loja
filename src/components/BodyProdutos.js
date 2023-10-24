@@ -3,9 +3,20 @@ import teclado from '../img/teclado1.jpeg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+export function addCarinho() {
+    const nomeProduto = document.getElementById('NomeProduto').textContent;
+    const precoProduto = document.getElementById('PrecoProduto').textContent;
 
+    // Adicione os valores aos produtos no carrinho usando `push`
+    carrinhoProdutos.push({ nome: nomeProduto, preco: precoProduto });
+
+    // Atualize a interface manualmente
+    renderCarrinho();
+}
+
+     
 function BodyProdutos() {
-    
+
     const notify = () =>{
         toast('Adicionado no Carrinho')
     }
@@ -63,14 +74,14 @@ function BodyProdutos() {
                             <img src={teclado} className='w-48 h-52 bg-top rounded-xl'></img>
                         </div>
                         <div className='justify-items-stretch flex flex-col mx-4 md:flex-row md:space-x-10 text-center text-white'>
-                            <p>Teclado </p>
-                            <p>R$ 19 </p>
+                            <p id='NomeProduto'>Teclado </p>
+                            <p id='PreçoProduto'>R$ 19 </p>
 
                         </div>
                         
                         <div className=" flex flex-col justify-around md:flex-row mb-4" >
                             <div className=" mx-1 text-white ">
-                                <button className="border w-28 rounded-lg bg-green-500" id="apple-pay-button">comprar</button>
+                                <button className="border w-28 rounded-lg bg-green-500" id="apple-pay-button" onClick={addCarinho}>comprar</button>
                                 <ToastContainer/>
                             </div>
                             <div className=" mx-1 text-white text-justify">
