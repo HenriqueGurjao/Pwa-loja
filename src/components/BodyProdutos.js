@@ -1,8 +1,22 @@
 import React, { useEffect } from 'react';
-import tecladoIMG from '../img/teclado1.jpeg';
 import { ToastContainer, toast } from 'react-toastify';
 import addNotification from 'react-push-notification';
 import 'react-toastify/dist/ReactToastify.css';
+import teclado from '../img/4.jpeg'
+import teclado2 from '../img/6.webp'
+import teclado3 from '../img/7.webp'
+import teclado4 from '../img/8.webp'
+import teclado5 from '../img/12.webp'
+import teclado6 from '../img/13.jpg'
+import teclado7 from '../img/images 1.jpeg'
+import teclado8 from '../img/images2.jpeg'
+import teclado9 from '../img/images3.jpeg'
+import teclado10 from '../img/images5.jpeg'
+import teclado11 from '../img/images9.jpeg'
+import teclado12 from '../img/teclado1.jpeg'
+
+
+
 
 export function addCarinho() {
     const nomeProduto = document.getElementById('NomeProduto').textContent;
@@ -11,18 +25,18 @@ export function addCarinho() {
 }
 
 const Prods = [
-    { id: 1, title: "teclado apple", price: 100.99 },
-    { id: 2, title: "teclado microsorft", price: 50.99 },
-    { id: 3, title: "teclado redragon", price: 40.99 },
-    { id: 4, title: "teclado samsung", price: 60.99 },
-    { id: 5, title: "teclado Skylong", price: 70.99 },
-    { id: 6, title: "teclado Logitech", price: 29.99 },
-    { id: 7, title: "teclado Dell", price: 199.99 },
-    { id: 8, title: "teclado Sony", price: 79.99 },
-    { id: 9, title: "teclado HP", price: 499.99 },
-    { id: 10, title: "teclado Canon", price: 299.99 },
-    { id: 11, title: "teclado gamer", price: 349.99 },
-    { id: 12, title: "teclado Epson", price: 59.99 }
+    { id: 1, title: "teclado apple", price: 100.99, Image:teclado },
+    { id: 2, title: "teclado microsorft", price: 50.99, Image:teclado2 },
+    { id: 3, title: "teclado redragon", price: 40.99, Image:teclado3 },
+    { id: 4, title: "teclado samsung", price: 60.99, Image:teclado4 },
+    { id: 5, title: "teclado Skylong", price: 70.99, Image:teclado5 },
+    { id: 6, title: "teclado Logitech", price: 29.99, Image:teclado6 },
+    { id: 7, title: "teclado Dell", price: 199.99, Image:teclado7 },
+    { id: 8, title: "teclado Sony", price: 79.99, Image:teclado8 },
+    { id: 9, title: "teclado HP", price: 499.99, Image:teclado9 },
+    { id: 10, title: "teclado Canon", price: 299.99, Image:teclado10 },
+    { id: 11, title: "teclado gamer", price: 349.99, Image:teclado11 },
+    { id: 12, title: "teclado Epson", price: 59.99, Image:teclado12 }
 
 ];
 
@@ -54,7 +68,7 @@ function BodyProdutos() {
                     <div className="w-60 h-80 bg-zinc-500 rounded-xl p-4 text-center text-white">
                         <div className='justify-items-center text-center text-white'>
                             <p>{Prods.title}</p>
-                            <img src={tecladoIMG} alt={Prods.title} className="w-48 h-52 bg-top rounded-xl" />
+                            <img src={Prods.Image} alt={Prods.Image} className="w-48 h-52 bg-top rounded-xl" />
                             <p>{Prods.price}</p>
                         </div>
                         

@@ -46,7 +46,7 @@ function BodyPerfil(){
     
         signInWithEmailAndPassword(email, password);
         notificacaoLogin()
-
+        window.open('http://localhost:3000/produtos');
     }
 
     function handleCreate(){
@@ -58,7 +58,7 @@ function BodyPerfil(){
         refreshPage()
     }
 
-    
+
     return (
         <div>
             <div className="grid justify-items-center p-4 text-xl">
