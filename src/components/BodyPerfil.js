@@ -14,7 +14,7 @@ function BodyPerfil(){
 } 
 
 
-    
+    ///Notificação de criação de perfil    
     const notificacaoCreate = () =>{
         addNotification({
             title: 'Compras Piratas Online',
@@ -24,11 +24,13 @@ function BodyPerfil(){
         });
     }
    
+    
+    ///Notificação de criação de perfil    
     const notificacaoLogin = () =>{
         addNotification({
             title: 'Compras Piratas Online',
             message: 'Login bem Sucedido',
-            duration: 4000,
+            duration: 6000,
             native: true,
         });
     }
@@ -56,6 +58,7 @@ function BodyPerfil(){
         refreshPage()
     }
 
+    
     return (
         <div>
             <div className="grid justify-items-center p-4 text-xl">

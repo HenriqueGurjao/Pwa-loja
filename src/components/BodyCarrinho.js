@@ -9,13 +9,84 @@ const Prods = [
 
 function BodyCarrinho() {
 
+  const applePayMethod = {
+    supportedMethods: 'https://google.com/pay',
+    data: {
+      version: 3,
+      merchantIdentifier: 'merchant.whatpwacando.today',
+      merchantCapabilities: ['supports3DS', 'supportsCredit', 'supportsDebit'],
+      supportedNetworks: ['amex', 'discover', 'masterCard', 'visa', 'maestro'],
+      countryCode: 'BR',
+    },
+  };
+
+
+  const paymentDetails = {
+    id: 'order-123',
+    displayItems: [
+      {
+        label: 'PWA Demo Payment',
+        amount: { currency: 'USD', value: '0.01' },
+      },
+    ],
+    total: {
+      label: 'Total',
+      amount: { currency: 'USD', value: '0.01' },
+    },
+  };
+
+  useEffect(() => {
+    const applePayButton = document.querySelector('#apple-pay-button');
+
+    if (applePayButton) {
+      applePayButton.addEventListener('click', async () => {
+        const request = new PaymentRequest([applePayMethod], paymentDetails);
+        const response = await request.show();
+
+        console.log(response);
+      });
+    }
+
+  }, []); 
+
+
+
+
+
+ /*
+
+  const shareData = {
+    title: "MDN",
+    text: "Learn web development on MDN!",
+    url: "https://developer.mozilla.org",
+  };
+  
+  const btn = document.querySelector("button");
+  const resultPara = document.querySelector(".result");
+  
+  // Share must be triggered by "user activation"
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.share(shareData);
+      resultPara.textContent = "MDN shared successfully";
+    } catch (err) {
+      resultPara.textContent = `Error: ${err}`;
+    }
+  });
+
+*/
+
+
+
   return (
     <div className="grid justify-items-center p-4 text-xl">
       <div>
+      <p class="result"></p>
         <ul className="">
           <li>
             <div className=" w-full bg-zinc-500 rounded-xl p-4 justify-around text-white ">
               <div className=' flex justify-items-start ml-4  text-white'>
+ 
                 <p className='mx-24'>Nome:</p>
                 <p className='mx-44'>Preço: </p>
                 <p className='mx-20'>quantidade: </p>
@@ -56,7 +127,7 @@ function BodyCarrinho() {
             <p>Total: </p>
           </div>
           <div className="mx-1 text-white text-center">
-            <button className="border w-44 rounded-lg bg-lime-500 text-xl" >
+            <button className="border w-44 rounded-lg bg-lime-500 text-xl" id="apple-pay-button">
               Finalizar Comprar
             </button>
           </div>

@@ -43,46 +43,6 @@ function BodyProdutos() {
     //    toast('Adicionado no Carrinho')
     //}
 
-  const applePayMethod = {
-    supportedMethods: 'https://google.com/pay',
-    data: {
-      version: 3,
-      merchantIdentifier: 'merchant.whatpwacando.today',
-      merchantCapabilities: ['supports3DS', 'supportsCredit', 'supportsDebit'],
-      supportedNetworks: ['amex', 'discover', 'masterCard', 'visa', 'maestro'],
-      countryCode: 'BR',
-    },
-  };
-
-
-  const paymentDetails = {
-    id: 'order-123',
-    displayItems: [
-      {
-        label: 'PWA Demo Payment',
-        amount: { currency: 'USD', value: '0.01' },
-      },
-    ],
-    total: {
-      label: 'Total',
-      amount: { currency: 'USD', value: '0.01' },
-    },
-  };
-
-  useEffect(() => {
-    const applePayButton = document.querySelector('#apple-pay-button');
-
-    if (applePayButton) {
-      applePayButton.addEventListener('click', async () => {
-        const request = new PaymentRequest([applePayMethod], paymentDetails);
-        const response = await request.show();
-
-        console.log(response);
-      });
-    }
-
-  }, []); 
-
 
 
 
@@ -100,7 +60,7 @@ function BodyProdutos() {
                         
                         <div className="flex flex-col justify-around md:flex-row mt-4">
                             <div className="mx-1 text-white">
-                                <button className="border w-28 rounded-lg bg-green-500" id="apple-pay-button" onClick={addCarinho}>
+                                <button className="border w-28 rounded-lg bg-green-500">
                                     Comprar
                                 </button>
                                 <ToastContainer />
