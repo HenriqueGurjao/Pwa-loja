@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import teclado from '../img/teclado1.jpeg';
 import { ToastContainer, toast } from 'react-toastify';
+import addNotification from 'react-push-notification';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function addCarinho() {
@@ -12,9 +13,19 @@ export function addCarinho() {
      
 function BodyProdutos() {
 
-    const notify = () =>{
-        toast('Adicionado no Carrinho')
+
+    const notificacao = () =>{
+        addNotification({
+            title: 'Compras Piratas Online',
+            message: 'O seu produto foi adicionado ao Carrinho',
+            duration: 4000,
+            native: true,
+        });
     }
+
+    //const notify = () =>{
+    //    toast('Adicionado no Carrinho')
+    //}
 
   const applePayMethod = {
     supportedMethods: 'https://google.com/pay',
@@ -54,7 +65,7 @@ function BodyProdutos() {
       });
     }
 
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
+  }, []); 
 
 
 
@@ -80,7 +91,7 @@ function BodyProdutos() {
                                 <ToastContainer/>
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -100,7 +111,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -120,7 +131,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -140,7 +151,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -160,7 +171,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -184,7 +195,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -204,7 +215,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -224,7 +235,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -244,7 +255,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
@@ -264,7 +275,7 @@ function BodyProdutos() {
 
                             </div>
                             <div className=" mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notify}>carrinho</button>
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>carrinho</button>
 
                             </div>
                         </div>
