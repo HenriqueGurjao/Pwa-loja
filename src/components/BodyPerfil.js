@@ -1,7 +1,6 @@
-import {  getAuth , useCreateUserWithEmailAndPassword , useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-
+import { getAuth , useCreateUserWithEmailAndPassword , useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import addNotification from 'react-push-notification';
 import { auth } from '../services/firebaseConfig';
-import { useState } from "react"
 import React from "react"
 import userIcon from '../img/users.png';
 
@@ -9,7 +8,31 @@ import userIcon from '../img/users.png';
 
 function BodyPerfil(){
     ///useState não funciona nessa merda
+
+  function refreshPage(){
+    window.location.reload();
+} 
+
+
+    
+    const notificacaoCreate = () =>{
+        addNotification({
+            title: 'Compras Piratas Online',
+            message: 'Usuario Cadastrado com sucesso',
+            duration: 8000,
+            native: true,
+        });
+    }
    
+    const notificacaoLogin = () =>{
+        addNotification({
+            title: 'Compras Piratas Online',
+            message: 'Login bem Sucedido',
+            duration: 4000,
+            native: true,
+        });
+    }
+
     
     const [createUserWithEmailAndPassword, user, loading, error, ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithEmailAndPassword, userlogin, loadinglogin, errorlogin,] = useSignInWithEmailAndPassword(auth);
@@ -20,6 +43,8 @@ function BodyPerfil(){
         const password = document.getElementById('senha').value;
     
         signInWithEmailAndPassword(email, password);
+        notificacaoLogin()
+
     }
 
     function handleCreate(){
@@ -27,6 +52,8 @@ function BodyPerfil(){
         const password = document.getElementById('senha').value;
 
         createUserWithEmailAndPassword(email, password);
+        notificacaoCreate()
+        refreshPage()
     }
 
     return (
@@ -58,7 +85,7 @@ function BodyPerfil(){
                         </form>
                     </div>
                 </div>
-
+        
             </div>
         </div>
 

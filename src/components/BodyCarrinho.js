@@ -1,53 +1,72 @@
 import React, { useEffect } from 'react';
 
+const Prods = [
+  { id: 1, title: "teclado apple", price: 100.99 },
+  { id: 2, title: "teclado microsorft", price: 50.99 },
+  { id: 3, title: "teclado redragon", price: 40.99 }
+
+];
 
 function BodyCarrinho() {
- 
-  <div class="ls-cart">
-  <input type="checkbox" class="ls-checkbox-cart"/>
-  <header class="ls-cart-header">
-    <span class="ls-ico-cart ls-float-left"></span>
-    <small>MEU CARRINHO</small>
-    <strong>4 produto(s)</strong>
-  </header>
-  <div class="ls-cart-content">
-    <ul class="ls-no-list-style">
-      <li>
-        <h2 class="ls-title-product">
-          <strong>01</strong> Email Marketing Locaweb
-        </h2>
-        <p> (Identificador) </p>
-        <a href="">Excluir</a>
-      </li>
-      <li>
-        <h2 class="ls-title-product">
-          <strong>02</strong> Monitor LED 27"
-        </h2>
-        <p> (Identificador) </p>
-        <a href="">Excluir</a>
-      </li>
-      <li>
-        <h2 class="ls-title-product">
-          <strong>06</strong> Honda FIT 2010 4p Flex 1.4 16v
-        </h2>
-        <p> (Identificador) </p>
-        <a href="">Excluir</a>
-      </li>
-      <li>
-        <h2 class="ls-title-product">
-          <strong>01</strong> Lorem Ipsum is simply dummy text
-        </h2>
-        <p> (Identificador) </p>
-        <a href="">Excluir</a>
-      </li>
-    </ul>
-    <footer class="ls-cart-footer ls-txt-center">
-      <a href="" class="ls-btn-primary">Finalizar Compra</a>
-    </footer>
-  </div>
-  </div>
+
+  return (
+    <div className="grid justify-items-center p-4 text-xl">
+      <div>
+        <ul className="">
+          <li>
+            <div className=" w-full bg-zinc-500 rounded-xl p-4 justify-around text-white ">
+              <div className=' flex justify-items-start ml-4  text-white'>
+                <p className='mx-24'>Nome:</p>
+                <p className='mx-44'>Preço: </p>
+                <p className='mx-20'>quantidade: </p>
+              </div>
+
+            </div>
+
+          </li>
+          {Prods.map((Prods) => (
+            <li key={Prods.id} className="m-4 ">
+              <div className="w-full bg-zinc-500 rounded-xl p-4 flex justify-between text-white">
+                <div className=' flex  justify-around text-white'>
+                  <p className='mx-24'>{Prods.title} </p>
+                  <p className='mx-20'>Preço: {Prods.price} </p>
+                  <p className='mx-24'>Quantidade: </p>              
+                  <p className='mx-24'>Valor final: quantidade * preço de produto  { Prods.price} </p>
+
+                </div>
+
+                <div className="flex flex-col justify-around md:flex-row ">
+
+                  <div className="mx-1 text-white text-justify">
+                    <button className="border w-32 h-20  rounded-lg bg-blue-500" >
+                      Remover Carrinho
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className=''></div>
+      <div className="w-2/5 bg-zinc-500 rounded-xl p-3  text-white ">
+        <div className=' flex flex-wrap justify-around text-white'>
+          <div className=''>
+            <p>Total: </p>
+          </div>
+          <div className="mx-1 text-white text-center">
+            <button className="border w-44 rounded-lg bg-lime-500 text-xl" >
+              Finalizar Comprar
+            </button>
+          </div>
+        </div>
+
+      </div>
 
 
-
+    </div>
+  )
 }
+
 export default BodyCarrinho
