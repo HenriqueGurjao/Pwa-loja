@@ -9,9 +9,6 @@ import userIcon from '../img/users.png';
 function BodyPerfil(){
     ///useState não funciona nessa merda
 
-  function refreshPage(){
-    window.location.reload();
-} 
 
 
     ///Notificação de criação de perfil    
@@ -40,13 +37,13 @@ function BodyPerfil(){
     const [signInWithEmailAndPassword, userlogin, loadinglogin, errorlogin,] = useSignInWithEmailAndPassword(auth);
   
 
-    function handleSingIn(){
+    async function handleSingIn(){
         const email = document.getElementById('login').value;
         const password = document.getElementById('senha').value;
     
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
         notificacaoLogin()
-        window.open('http://localhost:3000/produtos');
+        window.location.reload('http://localhost:3000/produtos');
     }
 
     function handleCreate(){
@@ -55,7 +52,7 @@ function BodyPerfil(){
 
         createUserWithEmailAndPassword(email, password);
         notificacaoCreate()
-        refreshPage()
+        window.location.reload(true);
     }
 
 

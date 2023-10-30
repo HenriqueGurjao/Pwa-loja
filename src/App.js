@@ -4,7 +4,7 @@ import BodyPerfil from './components/BodyPerfil';
 import BodyProdutos from './components/BodyProdutos';
 import { useState } from "react"
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import{useEffect } from 'react';
 
 function App() {
 
@@ -13,23 +13,27 @@ function App() {
   const [CompCarrinho, SetIsCarrinho] = useState(false);
 */
 
-  const [currentPage, setCurrentPage] = useState('home');
+const [currentPage, setCurrentPage] = useState('produtos'); // Definido como 'produtos' para ser a página principal
 
-  const navigateTo = (page) => {
-    setCurrentPage(page);
-    // Você pode atualizar a URL manualmente usando window.history.pushState
-    window.history.pushState(null, '', `/${page}`);
-  };
-
+useEffect(() => {
+  // Adicione um ouvinte de evento popstate para tratar as alterações de URL do navegador
   const handlePopState = () => {
-    // Quando o usuário usa os botões de navegação do navegador
-    // para voltar ou avançar, atualize a página com base na URL atual.
     const path = window.location.pathname.replace('/', '');
     setCurrentPage(path);
   };
 
-  // Adicione um ouvinte para o evento popstate
   window.addEventListener('popstate', handlePopState);
+
+  return () => {
+    window.removeEventListener('popstate', handlePopState);
+  };
+}, []);
+
+// Atualize a URL com base na página atual
+useEffect(() => {
+  window.history.pushState(null, '', `/${currentPage}`);
+}, [currentPage]);
+
 
   return (
     <div className="App">
@@ -39,13 +43,13 @@ function App() {
             <div className="hidden w-full md:block md:w-auto border border-black rounded-lg bg-stone-700" >
               <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 mx-4 md:flex-row md:space-x-32 md:mt-0 md:border-0 ">
                 <li>
-                  <button onClick={() => navigateTo('perfil')} className=" text-white">Perfil</button>
+                  <button onClick={() => setCurrentPage('perfil')} className=" text-white">Perfil</button>
                 </li>
                 <li>
-                  <button onClick={() => navigateTo('produtos')} className=" text-white">Produtos</button>
+                  <button onClick={() => setCurrentPage('produtos')} className=" text-white">Produtos</button>
                 </li>
                 <li>
-                  <button onClick={() => navigateTo('carrinho')} className=" text-white">carrinho</button>
+                  <button onClick={() => setCurrentPage('carrinho')} className=" text-white">carrinho</button>
                 </li>
 
               </ul>

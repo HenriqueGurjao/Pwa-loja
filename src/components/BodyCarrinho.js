@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
+import teclado from '../img/4.jpeg'
+import teclado2 from '../img/6.webp'
+import teclado3 from '../img/7.webp'
 
 const Prods = [
-  { id: 1, title: "teclado apple", price: 100.99 },
-  { id: 2, title: "teclado microsorft", price: 50.99 },
-  { id: 3, title: "teclado redragon", price: 40.99 }
+  { id: 1, title: "teclado apple", price: 100.99 , Image:teclado },
+  { id: 2, title: "teclado microsorft", price: 50.99, Image:teclado2 },
+  { id: 3, title: "teclado redragon", price: 40.99, Image:teclado3  }
 
 ];
 
@@ -50,9 +53,6 @@ function BodyCarrinho() {
   }, []); 
 
 
-
-
-
  /*
 
   const shareData = {
@@ -76,8 +76,6 @@ function BodyCarrinho() {
 
 */
 
-
-
   return (
     <div className="grid justify-items-center p-4 text-xl">
       <div>
@@ -99,10 +97,11 @@ function BodyCarrinho() {
             <li key={Prods.id} className="m-4 ">
               <div className="w-full bg-zinc-500 rounded-xl p-4 flex justify-between text-white">
                 <div className=' flex  justify-around text-white'>
+                <img className='mx-28 h-32 w-32' src={Prods.Image} alt={Prods.Image}/>
                   <p className='mx-24'>{Prods.title} </p>
                   <p className='mx-20'>Preço: {Prods.price} </p>
                   <p className='mx-24'>Quantidade: </p>              
-                  <p className='mx-24'>Valor final: quantidade * preço de produto  { Prods.price} </p>
+                  <p className='mx-24'>Valor final: {Prods.price} </p>
 
                 </div>
 

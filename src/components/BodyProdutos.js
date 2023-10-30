@@ -43,6 +43,21 @@ const Prods = [
      
 function BodyProdutos() {
 
+
+    function shareContent(){
+        let data = {url: "http://localhost:3000/produtos", text: "ACESSA AI ACESSA AI ACESSA AI ACESSA AI", title: "Acesse o Site Produtos Pirata Online"};
+        console.log(data);
+        
+        if (!navigator.share){
+          alert("Your device does not support the Web Share API. Try on an iPhone or Android phone!");
+        }
+        else {
+          navigator.share(data);
+        }
+      } 
+      
+      
+
     
     const notificacao = () =>{
         addNotification({
@@ -52,11 +67,6 @@ function BodyProdutos() {
             native: true,
         });
     }
-
-    //const notify = () =>{
-    //    toast('Adicionado no Carrinho')
-    //}
-
 
 
 
@@ -69,18 +79,18 @@ function BodyProdutos() {
                         <div className='justify-items-center text-center text-white'>
                             <p>{Prods.title}</p>
                             <img src={Prods.Image} alt={Prods.Image} className="w-48 h-52 bg-top rounded-xl" />
-                            <p>{Prods.price}</p>
+                            <p>R$ {Prods.price}</p>
                         </div>
                         
                         <div className="flex flex-col justify-around md:flex-row mt-4">
                             <div className="mx-1 text-white">
-                                <button className="border w-28 rounded-lg bg-green-500">
-                                    Comprar
+                                <button className="border w-28 rounded-lg bg-blue-500" onClick={shareContent}>
+                                    Compartilhar
                                 </button>
                                 <ToastContainer />
                             </div>
                             <div className="mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={notificacao}>
+                                <button className="border w-28 rounded-lg bg-green-500" onClick={notificacao}>
                                     Carrinho
                                 </button>
                             </div>
