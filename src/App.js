@@ -34,6 +34,21 @@ useEffect(() => {
   window.history.pushState(null, '', `/${currentPage}`);
 }, [currentPage]);
 
+  const [products, setProducts] = useState({
+    title: "",
+    price: 0,
+    img: ""
+  })
+
+  // function handleProduct(product) {
+  //   setProducts({
+  //     title: product.title,
+  //     price: product.price,
+  //     img: product.img
+  //   });
+  //   console.log("Recebi o produto: ", product);
+  // }
+  
 
   return (
     <div className="App">
@@ -57,11 +72,11 @@ useEffect(() => {
           </div>
         </nav>
       </header>
-      <body>
+      <section>
         {currentPage === 'perfil' && <BodyPerfil />}
         {currentPage === 'produtos' && <BodyProdutos />}
         {currentPage === 'carrinho' && <BodyCarrinho />}
-      </body>
+      </section>
     </div>
   );
 }

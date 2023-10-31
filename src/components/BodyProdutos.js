@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import addNotification from 'react-push-notification';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,15 +14,10 @@ import teclado9 from '../img/images3.jpeg'
 import teclado10 from '../img/images5.jpeg'
 import teclado11 from '../img/images9.jpeg'
 import teclado12 from '../img/teclado1.jpeg'
+import 'react-toastify/dist/ReactToastify.css';
+import { CartContext } from '../contexts/CartContext';
 
 
-
-
-export function addCarinho() {
-    const nomeProduto = document.getElementById('NomeProduto').textContent;
-    const precoProduto = document.getElementById('PrecoProduto').textContent;
-
-}
 
 const Prods = [
     { id: 1, title: "teclado apple", price: 100.99, Image:teclado },
@@ -41,7 +36,8 @@ const Prods = [
 ];
 
      
-function BodyProdutos() {
+function BodyProdutos(handleProducts) {
+    const { addToCart } = useContext(CartContext);
 
 
     function shareContent(){
@@ -56,8 +52,7 @@ function BodyProdutos() {
         }
       } 
       
-      
-
+    
     
     const notificacao = () =>{
         addNotification({
@@ -70,39 +65,39 @@ function BodyProdutos() {
 
 
 
-  return (
-    <div className="">
-        <ul className="flex flex-wrap justify-around">
-            {Prods.map((Prods) => (
-                <li key={Prods.id} className="m-4">
-                    <div className="w-60 h-80 bg-zinc-500 rounded-xl p-4 text-center text-white">
-                        <div className='justify-items-center text-center text-white'>
-                            <p>{Prods.title}</p>
-                            <img src={Prods.Image} alt={Prods.Image} className="w-48 h-52 bg-top rounded-xl" />
-                            <p>R$ {Prods.price}</p>
-                        </div>
-                        
-                        <div className="flex flex-col justify-around md:flex-row mt-4">
-                            <div className="mx-1 text-white">
-                                <button className="border w-28 rounded-lg bg-blue-500" onClick={shareContent}>
-                                    Compartilhar
-                                </button>
-                                <ToastContainer />
+    return (
+        <div className="">
+            <ul className="flex flex-wrap justify-around">
+                {Prods.map((Prod) => (
+                    <li key={Prod.id} className="m-4">
+                        <div className="w-60 h-80 bg-zinc-500 rounded-xl p-4 text-center text-white">
+                            <div className='justify-items-center text-center text-white'>
+                                <p>{Prod.title}</p>
+                                <img src={Prod.Image} alt={Prod.title} className="w-48 h-52 bg-top rounded-xl" />
+                                <p>{Prod.price}</p>
                             </div>
-                            <div className="mx-1 text-white text-justify">
-                                <button className="border w-28 rounded-lg bg-green-500" onClick={notificacao}>
-                                    Carrinho
-                                </button>
+
+                            <div className="flex flex-col justify-around md:flex-row mt-4">
+                                <div className="mx-1 text-white">
+                                    <button onClick={() => {addToCart(Prod); notificacao()}} className="border w-28 rounded-lg bg-green-500">
+                                        Carrinho
+                                    </button>
+                                    <ToastContainer />
+                                </div>
+                                <div className="mx-1 text-white text-justify">
+                                    <button className="border w-28 rounded-lg bg-blue-500" onClick={shareContent}>
+                                        Compartilhar
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            ))}
-        </ul>
+                    </li>
+                ))}
+            </ul>
 
 
-    </div>
-)
+        </div>
+    )
 }
 
 export default BodyProdutos
